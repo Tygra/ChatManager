@@ -218,7 +218,7 @@ namespace ChatManager
                            new PaginationTools.Settings
                            {
                                HeaderFormat = "Profanity List ({0}/{1})",
-                               FooterFormat = "Type /validator list {0} for more.",
+                               FooterFormat = "Type /managefilter list {0} for more.",
                                NothingToDisplayString = "There are currently no profanity items to filter."
                            });
                         break;
@@ -240,7 +240,7 @@ namespace ChatManager
             try
             {
                 Reload();
-                args.Player.SendSuccessMessage("[NameValidator] Successfully reloaded config & filter!");
+                args.Player.SendSuccessMessage("[ChatManager] Successfully reloaded config & filter!");
             }
             catch
             {
