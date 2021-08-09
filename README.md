@@ -29,7 +29,7 @@ All exception reasons are configurable.
 
 ## Config options:
 
-```json
+```
 {
   // Toggle the username filter.
   "ApplyNameValidator": true,
