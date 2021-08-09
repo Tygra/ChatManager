@@ -1,5 +1,7 @@
 # ChatManager
 
+This is a plugin for TShock for Terraria, by me. This plugin offers a set of features focussed on chat moderation & username checks.
+
 ## Permissions:
 
 chatmanager.manage
@@ -67,13 +69,15 @@ All exception reasons are configurable.
 
 /managefilter (or /mf) help/add/del/list
 
-## Additional function:
+## Chat tags:
 
 You can easily use colors in chat by applying the following parameters:
 
 @color: MESSAGE \
 
-- Example:
-`I am writing @red:a red message to display\ in chat.` < This will make the part from : to \ red. Applicable tags are:
+Applicable tags are:
 
 Red, Blue, Green, Yellow, Cyan, Pink, Purple.
+Example:
+
+`I am writing @red:a red message to display\ in chat.` < This will make the part from : to \ red.
