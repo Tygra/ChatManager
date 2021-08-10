@@ -105,14 +105,14 @@ namespace ChatManager
                             player.Disconnect(value);
                         return;
                     }
-                }
 
-                // alphanumeric trigger
-                if (!userName.IsAlphaNumeric() && Config.CheckForAlphaNumInUsername == true)
-                {
-                    Config.DisconnectReasons.TryGetValue("NonAlphaNumReason", out string value);
-                    player.Disconnect(value);
-                    return;
+                    // alphanumeric trigger
+                    if (!iUserName[i].IsAlphaNumeric() && Config.CheckForAlphaNumInUsername == true)
+                    {
+                        Config.DisconnectReasons.TryGetValue("NonAlphaNumReason", out string value);
+                        player.Disconnect(value);
+                        return;
+                    }
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace ChatManager
                     {
                         var help = new List<string>()
                         {
-                            "Command for adding and deleting username filters to the server. (alias: /mf)",
+                            "Command for adding and deleting chat/username filters to the server. (alias: /mf)",
                             "/managefilter add - Adds a word to the filter.",
                             "/managefilter del - Deletes a word from the filter.",
                             "/managefilter list - Lists the contents of the filter.",

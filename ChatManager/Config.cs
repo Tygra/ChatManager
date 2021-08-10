@@ -42,7 +42,7 @@ namespace ChatManager
 			try
 			{
 				var args = JsonConvert.DeserializeObject<Config>(File.ReadAllText(configPath));
-				if (args.DisconnectReasons.Keys.Count != 4)
+				if (args.DisconnectReasons.Keys.Count != 5)
 				{
 					TShock.Log.ConsoleError("[ChatManager] Configuration file was invalid. Please back-up and delete the current one to generate a new valid config file!");
 					return Default();
