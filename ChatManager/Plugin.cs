@@ -37,7 +37,7 @@ namespace ChatManager
             => "ChatManager";
 
         public override Version Version
-            => new Version(1, 0);
+            => new Version(1, 1);
 
         public override void Initialize()
         {
@@ -134,12 +134,13 @@ namespace ChatManager
                 ChatCooldown[iPlayer] = DateTime.UtcNow;
 
             int raw = args.TShockFormattedText.LastIndexOf(args.RawText);
-            string text = args.TShockFormattedText.Substring(0, raw);
 
-            if (!args.Player.HasPermission(Extensions.IgnoreChatFilter))
-                text += _filter.CensorString(args.RawText);
-
-            args.TShockFormattedText = text.AddColorTags();
+            if (args.Player.HasPermission(Extensions.IgnoreChatFilter))
+            {
+                args.TShockFormattedText = args.TShockFormattedText.Substring(0, raw) + args.RawText.AddColorTags();
+                return;
+            }
+            args.TShockFormattedText = args.TShockFormattedText.Substring(0, raw) + _filter.CensorString(args.RawText).AddColorTags();
         }
 
         private void ProfanityManager(CommandArgs args)
