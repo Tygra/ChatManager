@@ -1,5 +1,7 @@
 # ChatManager
 
+This is a plugin for TShock for Terraria, by me. This plugin offers a set of features focussed on chat moderation & username checks.
+
 ## Permissions:
 
 chatmanager.manage
@@ -29,59 +31,53 @@ All exception reasons are configurable.
 
 ## Config options:
 
-```csharp
-		// Activate Username validation
-		public bool ApplyNameValidator;
+```
+{
+  // Toggle the username filter.
+  "ApplyNameValidator": true,
+  
+  // Ban or kick for inappropriate names.
+  "BanIfInappropriateUsername": false,
 
-		// Checks to ban or disconnect joining users
-		public bool BanIfInappropriateUsername;
+  // Check for alphanumeric characters in names.
+  "CheckForAlphaNumInUsername": true,
 
-		// Checks to allow nonalphanumeric characters in
-		public bool CheckForAlphaNumInUsername;
+  // Check for space characters in names.
+  "CheckMaxSpacesInUsername": true,
 
-		// Checks to allow spacekeys in names
-		public bool CheckMaxSpacesInUsername;
+  // Sets the maximum allowed spaces in names.
+  "MaxSpacesInUsername": 3,
+  
+  // Toggle the chatfilter.
+  "ApplyChatFilter": true,
 
-		// Amount of space keys to allow
-		public int MaxSpacesInUsername;
+  // Interval in which messages are allowed to be sent in chat.
+  "MsgSpamIntervalInSec": 5,
 
-		// Activate Chat filter
-		public bool ApplyChatFilter;
-
-		// Speed in which messages are sent in chat.
-		public int MsgSpamIntervalInSec;
-
-    ...
-
-    DisconnectReasons = new Dictionary<string, string>
-      {
-      // The max char amount kick reason.
-        { "MaxLengthReason", "Your name is too long. Please rejoin with a shorter name. Maximum amount of characters is 20." },
-
-      // The max spaces amount kick reason (reuse the {amountofspaces} tag to replace this value with the MaxSpacesInUsername value).
-        { "MaxSpacesReason", "You have too many spaces in your name. The maximum allowed is {amountofspaces}. Please rejoin with a shorter name." },
-
-      // The inappropriate name kick/ban reason (change this to fit your preference for banning or kicking).
-        { "InappNameReason", "Inappropriate names are not allowed. Please rejoin with a tolerable name." },
-
-      // The non-alphanumeric name kick reason.
-        { "NonAlphaNumReason", "Foreign characters in your username are now allowed. Please rejoin with only alphanumeric characters." },
-
-      // The sending-messages-too-fast reason in chat.
-        { "SpamMessageReason", "You are sending messages too fast. Please slow down." }
-      }
+  // Custom error reasons, leave be if no change is needed.
+  "DisconnectReasons": {
+    "MaxLengthReason": "Your name is too long. Please rejoin with a shorter name. Maximum amount of characters is 20.",
+    "MaxSpacesReason": "You have too many spaces in your name. The maximum allowed is {amountofspaces}. Please rejoin with a shorter name.",
+    "InappNameReason": "Inappropriate names are not allowed. Please rejoin with a tolerable name.",
+    "NonAlphaNumReason": "Foreign characters in your username are not allowed. Please rejoin with only alphanumeric characters.",
+    "SpamMessageReason": "You are sending messages too fast. Please slow down."
+  }
+}
 ```
 
 ## Command:
 
 /managefilter (or /mf) help/add/del/list
 
-## Additional function:
+## Chat tags:
 
 You can easily use colors in chat by applying the following parameters:
 
-@red/green/blue/yellow/cyan/purple/pink: MESSAGE \
+@color: MESSAGE \
 
+Applicable tags are:
+
+Red, Blue, Green, Yellow, Cyan, Pink, Purple.
 Example:
 
-`I am writing @red:a red message to display\ in chat.`
+`I am writing @red:a red message to display\ in chat.` < This will make the part from : to \ red.
