@@ -37,7 +37,7 @@ namespace ChatManager
             => "ChatManager";
 
         public override Version Version
-            => new Version(1, 1);
+            => new Version(1, 2);
 
         public override void Initialize()
         {
@@ -96,7 +96,7 @@ namespace ChatManager
                 for (int i = 0; i < iUserName.Length; i++)
                 {
                     // inappropriate name trigger
-                    if (_filter.IsProfanity(iUserName[i]))
+                    if (_filter.ContainsProfanity(iUserName[i]))
                     {
                         Config.DisconnectReasons.TryGetValue("InappNameReason", out string value);
                         if (Config.BanIfInappropriateUsername == true)
